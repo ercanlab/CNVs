@@ -1,0 +1,102 @@
+######################
+## Configuration file for RNAseq and DEseq pipelines
+## Used in ErcanLab_RNA-seq_analysis_v2.docx and ErcanLab_DE-seq_analysis_v1.docx protocols
+## found in Ercan's lab google drive.
+##
+## Author: Diogo Mesquita - dam740@nyu.edu
+##
+## Usage:
+##   Edit this configuration with the values for your analysis.
+##   The only fields that you probably do NOT need to change are 'c_elegans_wbid_to_gene',
+##   'c_elegans_annots' and 'sbatch_scripts'.
+##
+##   All replicates should be added to the 'infiles' list as a separate element.
+##
+##   Elements of 'infiles' must have:
+##       - id:        unique identifier of biological replicate. Technical replicates
+##                    must have the same id
+##       - condition: condition name. These are generic, all replicates from
+##                    the same condition should have the same "condition"
+##       - type:      must only take one of two values: "control" or "treatment"
+##       - fastq:     fastq file name (can be or not gzipped; do NOT include path to file)
+##
+##
+---
+# title of the experiment - make sure the same name doesn't exit in /scratch/cgsb/ercan/rna/deseq 
+experiment_title: ty1916_l2
+
+nyuid: dam740
+mail: dam740@nyu.edu
+
+# C. elegans annotations
+c_elegans_wbid_to_gene: /scratch/cgsb/ercan/annot/c_elegans.WS220.annotations.WBID_to_gene.txt
+c_elegans_annots: /scratch/cgsb/ercan/annot/WS220_gene_annotations_WormMart_unique.xlsx
+
+# scripts directory
+sbatch_scripts: /scratch/cgsb/ercan/scripts/rna/slurm
+
+infiles:
+  - id: 1
+    condition: N2
+    type: control
+    fastq: MK18_ATCACG_L003_R1_001.fastq.gz
+
+  - id: 1
+    condition: N2
+    type: control  
+    fastq: MK26_ATCACG_L002_R1_001.fastq.gz
+
+  - id: 2
+    condition: N2
+    type: control
+    fastq: MK135_ACTTGA_L002_R1_001.fastq.gz
+
+  - id: 2
+    condition: N2
+    type: control
+    fastq: MK220_ACTTGA_L008_R1_001.fastq.gz
+
+  - id: 2
+    condition: N2
+    type: control
+    fastq: MK198_ACTTGA_L006_R1_001.fastq.gz
+
+  - id: 3
+    condition: N2
+    type: control
+    fastq: MK136_CTTGTA_L002_R1_001.fastq.gz
+
+  - id: 3
+    condition: N2
+    type: control
+    fastq: MK200_CTTGTA_L004_R1_001.fastq.gz
+
+  - id: 4
+    condition: N2
+    type: control
+    fastq: MK137_AGTTCC_L002_R1_001.fastq.gz
+
+  - id: 4
+    condition: N2
+    type: control
+    fastq: MK202_AGTTCC_L004_R1_001.fastq.gz
+
+  - id: 5
+    condition: N2
+    type: control
+    fastq: MK09_TTAGGC_L004_R1_001.fastq.gz
+
+  - id: 6
+    condition: N2
+    type: control
+    fastq: MK31_TTAGGC_L004_R1_001.fastq.gz
+
+  - id: 7
+    condition: N2
+    type: control
+    fastq: MK45_TAGCTT_L004_R1_001.fastq.gz
+
+  - id: 8
+    condition: ty1916
+    type: treatment
+    fastq: SEA80_GCCAAT_L004_R1_001.fastq.gz
